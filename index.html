@@ -17,13 +17,13 @@
     }
 
     .popup_box {
-        color: #4d4e53;
+        color: #356a93;
         text-align: center;
-        width: 570px;
+        width: 370px;
+        height: 240px;
         margin-top: 101px;
-        font-family: inherit;
-        background-color: #fff;
-        border-radius: 3px;
+        background-color: #f9ecc2ff;
+        border-radius: 2px;
         box-shadow: 0 2px 26px rgba(0, 0, 0, .3), 0 0 0 1px rgba(0, 0, 0, .1);
         font-family: Helvetica, Arial, sans-serif;
         margin: 0 auto 40px;
@@ -46,7 +46,7 @@
         color: white;
         border-radius: 4px;
         border: 1px solid #356a93;
-        
+        margin-top:30px;
     }
 
     .popup_box button:hover {
@@ -57,6 +57,37 @@
         display:none;
     }
 
+    .continue_box {
+        font-family: Helvetica, Arial, sans-serif;
+        width: 200px;
+        height: 85px;
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: #f9ecc2ff;
+        padding: 20px;
+        box-shadow: 2px 2px #d8d2a7;
+        border-radius: 4px;
+    }
+
+    .continue_box p {
+        color: #356a93;
+    }
+
+    .continue_box button {
+        background: #356a93;
+        color: white;
+        padding: 10px;
+        border-width: 0px;
+        width:100%;
+        border-radius: 2px;
+        float:right;
+    }
+
+    .continue_box button:hover {
+        cursor:pointer;
+    }
+
 
 </style>
 <body>
@@ -64,17 +95,26 @@
 
     <div id="popup_background" class="popup_background hidden"></div>
     <div id="public_popup_box" class="popup_box hidden">
-        <h2 id="popup_title"></h2>
-        <p>This contains well tested expectations, used across many teams. Use, copy and edit this framework as you see fit!</p>
-        <p>Click <b>"Use this Framework"</b> to access the source sheet, along with instructions to manage a team for free using Contour </p>
-        <button onClick=hidePopups()>Continue</button>
+        <h3 id="popup_title"></h3>
+        <p>This Framework contains well-tested expectations used across many companies.</p>
+        <button onClick=hidePopups()>Check it Out!</button>
     </div>
 
     <div id="private_popup_box" class="popup_box hidden">
-        <h2>Welcome to your new Framework Page</h2>
-        <p>This will stay up to date with any changes you make on your Framework Spreadsheet.</p>
+        <h3>Welcome to your new Framework Page</h3>
         <p><b>Only users with a Google account and permission to see the Spreadsheet will able to access it.</b></p>
         <button onClick=hidePopups()>Continue</button>
+    </div>
+
+    <div id="continue_popup_box" class="popup_box hidden">
+        <h3>Welcome to your new Framework Page</h3>
+        <p><b>Only users with a Google account and permission to see the Spreadsheet will able to access it.</b></p>
+        <button onClick=hidePopups()>Continue</button>
+    </div>
+
+    <div id="continue_cta" class="continue_box hidden">
+        <p><b>Create your own version.</b></p>
+        <button onClick=hidePopups()>Copy this Framework ></button>
     </div>
 </body>
 
@@ -109,7 +149,7 @@
             showPopup("public_popup_box");
             let title = params.get("dt");
             let titleDiv = document.getElementById("popup_title");
-            titleDiv.innerHTML = "Welcome to the " + title;
+            titleDiv.innerHTML = title;
         } else if (!!params && params.get("nv")=="true") {
             showPopup("private_popup_box");
         }
@@ -129,6 +169,12 @@
         popupBg.classList.add('hidden');
         privatePopupBox.classList.add('hidden');
         publicPopupBox.classList.add('hidden');
+
+        const params = getURLParams();
+        if (!!params && params.get("tt")=="true") {
+            let cta = document.getElementById("continue_cta");
+            cta.classList.remove('hidden');
+        }
     }
 
     // Call the function on page load
