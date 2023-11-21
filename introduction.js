@@ -11,10 +11,10 @@ function setIframeSrc() {
 
     let iframeURL = null;
     if (!!params && params.get("public") == "true") {
-        iframeURL = "https://script.google.com/macros/s/AKfycbyhj1SfIqfu0P5VPB82ind8pf1XRoyQ0j0HZmMl9KRLjzxUenIvEIRdNWgLCCk_ovA/exec";
+        iframeURL = "https://script.google.com/macros/s/AKfycbxnwBc0eaYpDlmJtKsugJXhruzXxubKsTTFS19lzEP5BPsLqVkgFFqY3t8Sio9WDA/exec";
     } else {
         console.log("private")
-        iframeURL = 'https://script.google.com/macros/s/AKfycby9CMl7yGdZUF1u9gW52wR_Wt4zxIGWRjgcQxe9NAxD0t_phkXRtTY5agSsTIJv8JM/exec';
+        iframeURL = 'https://script.google.com/macros/s/AKfycbxjwV4NRLXZ-fvTRkp6eEDXZRvKNTqiJ4eyACdLXtIrai12AceyBZRk11ZoBBJgwXk/exec';
     }
 
     // Append parameters to iframe URL
