@@ -3,93 +3,31 @@
 
 <head>
     <link rel="icon" type="image/x-icon" href="https://i.ibb.co/B69LgXH/Logo-Favicon.png">
+    <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 
-<style>
-    
-    .popup_background {
-        background-color: rgba(0, 0, 0, .4);
-        bottom: 0;
-        left: 0;
-        position: fixed;
-        right: 0;
-        top: 0;
+<script>
+    function openFramework() {
+
+    const params = new URLSearchParams(window.location.search);
+    const rootUrl = "https://docs.google.com/spreadsheets/d/";
+    window.open( rootUrl+params.get("fw"), '_blank');
+    let popupBg = document.getElementById("popup_background");
+    let onboarding = document.getElementById("onboarding-widget");
+    popupBg.classList.add('hidden');
+    onboarding.classList.add('hidden');
     }
 
-    .popup_box {
-        color: #356a93;
-        text-align: center;
-        width: 370px;
-        height: 240px;
-        margin-top: 101px;
-        background-color: #f9ecc2ff;
-        border-radius: 2px;
-        box-shadow: 0 2px 26px rgba(0, 0, 0, .3), 0 0 0 1px rgba(0, 0, 0, .1);
-        font-family: Helvetica, Arial, sans-serif;
-        margin: 0 auto 40px;
-        margin-top: 100px;
-        position: relative;
-        padding:20px;
+    function showOnboarding() {
+        let onboardingTile = document.getElementById("onboarding-widget");
+        let bg = document.getElementById("popup_background");
+        let continueCta = document.getElementById("continue_cta");
+        onboardingTile.classList.remove("hidden");
+        bg.classList.remove("hidden");
+        continueCta.classList.add("hidden");
     }
+</script>
 
-    .popup_box p {
-        padding-top: 20px;
-        line-height: 24px;
-    }
-
-    .popup_box button {
-        padding: 7px;
-        padding-left: 35px;
-        padding-right: 35px;
-        /* font-weight: bold; */
-        background: #356a93;
-        color: white;
-        border-radius: 4px;
-        border: 1px solid #356a93;
-        margin-top:30px;
-    }
-
-    .popup_box button:hover {
-        cursor: pointer;
-    }
-
-    .hidden { 
-        display:none;
-    }
-
-    .continue_box {
-        font-family: Helvetica, Arial, sans-serif;
-        width: 200px;
-        height: 85px;
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        background: #f9ecc2ff;
-        padding: 20px;
-        box-shadow: 2px 2px #d8d2a7;
-        border-radius: 4px;
-    }
-
-    .continue_box p {
-        color: #356a93;
-    }
-
-    .continue_box button {
-        background: #356a93;
-        color: white;
-        padding: 10px;
-        border-width: 0px;
-        width:100%;
-        border-radius: 2px;
-        float:right;
-    }
-
-    .continue_box button:hover {
-        cursor:pointer;
-    }
-
-
-</style>
 <body>
     <iframe id="frameworkFrame" style='width:100%; height:100%; position: absolute; left:0; right: 0; top:0; border-width:0px;'> </iframe>
 
@@ -114,76 +52,33 @@
 
     <div id="continue_cta" class="continue_box hidden">
         <p><b>Create your own version.</b></p>
-        <button onClick=hidePopups()>Copy this Framework ></button>
+        <button onClick=showOnboarding()>Copy this Framework ></button>
+    </div>
+
+    <div id="onboarding-widget" class="onboarding_widget hidden">    
+        <div class="step" id="step1">
+            <h3>This framework was made using our <b>Add-on</b> for Google Sheets.</h3>
+            <img src="https://i.ibb.co/R98LVS3/Screenshot-2023-11-21-at-10-16-43.png"></img>
+            <p class="subtext">No need for <i>another</i> app...</p>
+            <button  class=" step_button next-step" data-next-step="2">I'm Listening<b style="float:right;">&gt;</b></button>
+        </div>
+        <div class="step" id="step2">
+            <h3>Install the Add-on to edit and personalise your own copy. </h3>
+            <img src="https://i.ibb.co/pff1WP0/Screenshot-2023-11-21-at-10-12-28.png"></img>
+            <p class="subtext">It’s fast and free</p>
+            <button  class=" step_button next-step" data-next-step="3">Sounds Good!<b style="float:right;">&gt;</b></button>
+        </div>
+        <div class="step" id="step3">
+            <h3>A quick FYI… with the Add-on you can manage a team!</h3>
+            <img src="https://i.ibb.co/HxZwKmB/Screenshot-2023-11-21-at-10-12-38.png"></img>
+            <p class="subtext">Free for your first team</p>
+            <button  class=" step_button next-step" onclick=openFramework()>Ok, Lets go already!<b style="float:right;">&gt;</b></button>
+        </div>
+
     </div>
 </body>
+<script src="introduction.js"></script>
+<script src="onboarding.js"></script>
 
-<script>
-
-    function getURLParams() {
-        const params = new URLSearchParams(window.location.search);
-        console.log(params)
-        return params;
-    }
-
-    // Function to set iframe source
-    function setIframeSrc() {
-        const iframe = document.getElementById('frameworkFrame');
-        const params = getURLParams();
-
-        let iframeURL = null;
-        if (!!params && params.get("public") == "true") {
-            iframeURL = "https://script.google.com/macros/s/AKfycbyhj1SfIqfu0P5VPB82ind8pf1XRoyQ0j0HZmMl9KRLjzxUenIvEIRdNWgLCCk_ovA/exec";
-        } else {
-            console.log("private")
-            iframeURL = 'https://script.google.com/macros/s/AKfycby9CMl7yGdZUF1u9gW52wR_Wt4zxIGWRjgcQxe9NAxD0t_phkXRtTY5agSsTIJv8JM/exec';
-        }
-
-        // Append parameters to iframe URL
-        iframe.src = `${iframeURL}?${params}`;
-    }
-
-    function setPopup() {
-        const params = getURLParams();
-        if (!!params && params.get("tt")=="true") {
-            showPopup("public_popup_box");
-            let title = params.get("dt");
-            let titleDiv = document.getElementById("popup_title");
-            titleDiv.innerHTML = title;
-        } else if (!!params && params.get("nv")=="true") {
-            showPopup("private_popup_box");
-        }
-    }
-
-    function showPopup(popupId) {
-        let popupBg = document.getElementById("popup_background");
-        let popupBox = document.getElementById(popupId);
-        popupBg.classList.remove('hidden');
-        popupBox.classList.remove('hidden');
-    }
-
-    function hidePopups() {
-        let popupBg = document.getElementById("popup_background");
-        let publicPopupBox = document.getElementById("public_popup_box");
-        let privatePopupBox = document.getElementById("private_popup_box");
-        popupBg.classList.add('hidden');
-        privatePopupBox.classList.add('hidden');
-        publicPopupBox.classList.add('hidden');
-
-        const params = getURLParams();
-        if (!!params && params.get("tt")=="true") {
-            let cta = document.getElementById("continue_cta");
-            cta.classList.remove('hidden');
-        }
-    }
-
-    // Call the function on page load
-    setIframeSrc();
-    setTimeout(function() {
-        console.log("ran")
-        setPopup();
-    },2000);
-    
-</script>
 
 </html>
