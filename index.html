@@ -8,14 +8,18 @@
 
 <script>
     function openFramework() {
+        const currentUrl = new URL(window.location.href);
+        currentUrl.searchParams.delete('public');
+        currentUrl.searchParams.delete('tt');
+        currentUrl.searchParams.set('copy', true);
+        window.open( currentUrl, '_blank');
 
-    const params = new URLSearchParams(window.location.search);
-    const rootUrl = "https://docs.google.com/spreadsheets/d/";
-    window.open( rootUrl+params.get("fw"), '_blank');
-    let popupBg = document.getElementById("popup_background");
-    let onboarding = document.getElementById("onboarding-widget");
-    popupBg.classList.add('hidden');
-    onboarding.classList.add('hidden');
+        let onboardingTile = document.getElementById("onboarding-widget");
+        let bg = document.getElementById("popup_background");
+        let continueCta = document.getElementById("continue_cta");
+        onboardingTile.classList.add("hidden");
+        bg.classList.add("hidden");
+        continueCta.classList.add("hidden");
     }
 
     function showOnboarding() {
@@ -34,8 +38,8 @@
     <div id="popup_background" class="popup_background hidden"></div>
     <div id="public_popup_box" class="popup_box hidden">
         <h3 id="popup_title"></h3>
-        <p>This Framework contains well-tested expectations, tailored to early stage companies.</p>
-        <button onClick=hidePopups()>Check it Out!</button>
+        <p style="font-size: 20px; padding-top:0px;">This Framework contains well-tested roles and expectations for Startups and Scaleups.</p>
+        <button onClick=hidePopups()>CONTINUE</button>
     </div>
 
     <div id="private_popup_box" class="popup_box hidden">
@@ -51,29 +55,23 @@
     </div>
 
     <div id="continue_cta" class="continue_box hidden">
-        <p><b>Create your own version.</b></p>
-        <button onClick=showOnboarding()>Copy this Framework ></button>
+        <p><b>Edit your own branded version.</b></p>
+        <button onClick=showOnboarding()>COPY FRAMEWORK ></button>
     </div>
 
     <div id="onboarding-widget" class="onboarding_widget hidden">    
         <div class="step" id="step1">
-            <h3>This framework was made using our <b>Add-on</b> for Google Sheets.</h3>
-            <img src="https://i.ibb.co/R98LVS3/Screenshot-2023-11-21-at-10-16-43.png"></img>
-            <p class="subtext">No need for <i>another</i> app...</p>
-            <button  class=" step_button next-step" data-next-step="2">Continue<b style="float:right;">&gt;</b></button>
+            <h3>Copy, rebrand and deploy your own page with our Google Drive app.</h3>
+            <img src="https://i.ibb.co/GFrk27g/Screenshot-2023-12-06-at-11-23-36.png"></img>
+            <p class="subtext">It takes two minutes</p>
+            <button  class=" step_button next-step" onclick=openFramework()>Create a Copy</button>
         </div>
-        <div class="step" id="step2">
+        <!-- <div class="step" id="step2">
             <h3>Install the Add-on to edit and personalise your own copy. </h3>
             <img src="https://i.ibb.co/pff1WP0/Screenshot-2023-11-21-at-10-12-28.png"></img>
             <p class="subtext">It’s fast and free</p>
             <button  class=" step_button next-step" data-next-step="3">Sounds Good!<b style="float:right;">&gt;</b></button>
-        </div>
-        <div class="step" id="step3">
-            <h3>FYI… with this Add-on you can also manage your team!</h3>
-            <img src="https://i.ibb.co/HxZwKmB/Screenshot-2023-11-21-at-10-12-38.png"></img>
-            <p class="subtext">Free for your first team</p>
-            <button  class=" step_button next-step" onclick=openFramework()>Ok, Lets go already!<b style="float:right;">&gt;</b></button>
-        </div>
+        </div> -->
 
     </div>
 </body>
