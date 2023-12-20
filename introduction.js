@@ -14,7 +14,7 @@ function setIframeSrc() {
         iframeURL = "https://script.google.com/macros/s/AKfycbxnwBc0eaYpDlmJtKsugJXhruzXxubKsTTFS19lzEP5BPsLqVkgFFqY3t8Sio9WDA/exec";
     } else {
         console.log("private")
-        iframeURL = 'https://script.google.com/macros/s/AKfycbxjwV4NRLXZ-fvTRkp6eEDXZRvKNTqiJ4eyACdLXtIrai12AceyBZRk11ZoBBJgwXk/exec';
+        iframeURL = 'https://script.google.com/macros/s/AKfycbwrCIaZPr7mDsU7jmNKIAgtE8kwYs6tClZS6IsigHqNMFCmAFu3yjpDIuC72KVGG0Q/exec';
     }
 
     // Append parameters to iframe URL
