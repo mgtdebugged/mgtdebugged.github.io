@@ -11,13 +11,13 @@ function setIframeSrc() {
 
   let iframeURL = null;
   if (!!params && params.get("public") == "true") {
-      iframeURL = "https://script.google.com/macros/s/AKfycbyrEC71RIuYqBhNCYy2smwlihkT4nwFPFnbCPuSkkjaHSQOcasMBP7H6yIa-33CVZc/exec";
+      iframeURL = "https://script.google.com/macros/s/AKfycbyUrs2TvnhrJy0eKpcra2Ul9BFEcT4SYtpoKSxlREhi-KnL8PWfC1BrtOvJxz2NT6Y/exec";
       console.log("public")
-      console.log("AKfycbyrEC71RIuYqBhNCYy2smwlihkT4nwFPFnbCPuSkkjaHSQOcasMBP7H6yIa-33CVZc")
+      console.log("AKfycbyUrs2TvnhrJy0eKpcra2Ul9BFEcT4SYtpoKSxlREhi-KnL8PWfC1BrtOvJxz2NT6Y")
   } else {
       console.log("private")
-      console.log("AKfycbyHkmXDxBgbBJlGztMY19RLTNBQjgaORFeTM2aeBj_G7MmbbLW95sMVQKbdsG7JIwo")
-      iframeURL = 'https://script.google.com/macros/s/AKfycbyHkmXDxBgbBJlGztMY19RLTNBQjgaORFeTM2aeBj_G7MmbbLW95sMVQKbdsG7JIwo/exec';
+      console.log("AKfycbxuEZ4I27fwucvgYf6ZKL3E400_kOgdeiOm46ETYnjGlJ2kkprIjpfYHccq4SLBbMY")
+      iframeURL = 'https://script.google.com/macros/s/AKfycbxuEZ4I27fwucvgYf6ZKL3E400_kOgdeiOm46ETYnjGlJ2kkprIjpfYHccq4SLBbMY/exec';
   }
 
   // Append parameters to iframe URL
