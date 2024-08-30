@@ -10,15 +10,15 @@ function setIframeSrc() {
   const params = getURLParams();
 
   let iframeURL = null;
-  if (!!params && params.get("public") == "true") {
+  // if (!!params && params.get("public") == "true") {
       iframeURL = "https://script.google.com/macros/s/AKfycbyUrs2TvnhrJy0eKpcra2Ul9BFEcT4SYtpoKSxlREhi-KnL8PWfC1BrtOvJxz2NT6Y/exec";
       console.log("public")
       console.log("AKfycbyUrs2TvnhrJy0eKpcra2Ul9BFEcT4SYtpoKSxlREhi-KnL8PWfC1BrtOvJxz2NT6Y")
-  } else {
-      console.log("private")
-      console.log("AKfycbxuEZ4I27fwucvgYf6ZKL3E400_kOgdeiOm46ETYnjGlJ2kkprIjpfYHccq4SLBbMY")
-      iframeURL = 'https://script.google.com/macros/s/AKfycbxuEZ4I27fwucvgYf6ZKL3E400_kOgdeiOm46ETYnjGlJ2kkprIjpfYHccq4SLBbMY/exec';
-  }
+  // } else {
+  //     console.log("private")
+  //     console.log("AKfycbxuEZ4I27fwucvgYf6ZKL3E400_kOgdeiOm46ETYnjGlJ2kkprIjpfYHccq4SLBbMY")
+  //     iframeURL = 'https://script.google.com/macros/s/AKfycbxuEZ4I27fwucvgYf6ZKL3E400_kOgdeiOm46ETYnjGlJ2kkprIjpfYHccq4SLBbMY/exec';
+  // }
 
   // Append parameters to iframe URL
   iframe.src = `${iframeURL}?${params}`;
