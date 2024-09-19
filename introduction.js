@@ -11,7 +11,7 @@ function setIframeSrc() {
 
   let iframeURL = null;
   // if (!!params && params.get("public") == "true") {
-      iframeURL = "https://script.google.com/macros/s/AKfycbyUrs2TvnhrJy0eKpcra2Ul9BFEcT4SYtpoKSxlREhi-KnL8PWfC1BrtOvJxz2NT6Y/exec";
+      iframeURL = "https://script.google.com/macros/s/AKfycbySY6FWT1VOgrMr0ihNFzuy7Nk9fVAB3iDhx7HgFTioKyyjSoQVYKO0yki6hhxkzSQ/exec";
       console.log("public")
       console.log("AKfycbyUrs2TvnhrJy0eKpcra2Ul9BFEcT4SYtpoKSxlREhi-KnL8PWfC1BrtOvJxz2NT6Y")
   // } else {
