@@ -16,7 +16,7 @@ function setIframeSrc() {
     iframe.remove();
     errorMessage.classList.remove("hidden");
   } else {
-    iframeURL = "https://script.google.com/macros/s/AKfycbyEJUbw156HQy3mrxEiXEPqqXV5469kAsgPL7XcFX006I136jX2SacGSEdgRWreTto/exec";
+    iframeURL = "https://script.google.com/macros/s/AKfycbwRehHImRzET9NXRNnej3NiuNyQytpBrCLRBfdQ6pzUHWL7mwaG4Aui5zlf_0gs6A/exec";
   }
   
   // if (!!params && params.get("public") == "true") {
