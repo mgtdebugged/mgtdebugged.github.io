@@ -24,18 +24,6 @@ function setIframeSrc() {
   iframe.src = `${iframeURL}?${params}`;
 }
 
-function setPopup() {
-  const params = getURLParams();
-  if (!!params && params.get("tt")=="true") {
-      showPopup("public_popup_box");
-      let title = params.get("dt");
-      let titleDiv = document.getElementById("popup_title");
-      titleDiv.innerHTML = title;
-  } else if (!!params && params.get("nv")=="true") {
-      showPopup("private_popup_box");
-  }
-}
-
 function showPopup(popupId) {
   let popupBg = document.getElementById("popup_background");
   let popupBox = document.getElementById(popupId);
@@ -61,6 +49,3 @@ function hidePopups() {
 
 // Call the function on page load
 setIframeSrc();
-setTimeout(function() {
-  setPopup();
-},2000);
