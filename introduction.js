@@ -7,13 +7,19 @@ function getURLParams() {
 // Function to set iframe source
 function setIframeSrc() {
   const iframe = document.getElementById('frameworkFrame');
+  const errorMessage = document.getElementById('error-message');
   const params = getURLParams();
 
   let iframeURL = null;
+
+  if (!params || !params.get("fw")) {
+    iframe.remove();
+    errorMessage.classList.remove("hidden");
+  } else {
+    iframeURL = "https://script.google.com/macros/s/AKfycbyEJUbw156HQy3mrxEiXEPqqXV5469kAsgPL7XcFX006I136jX2SacGSEdgRWreTto/exec";
+  }
+  
   // if (!!params && params.get("public") == "true") {
-      iframeURL = "https://script.google.com/macros/s/AKfycbyEJUbw156HQy3mrxEiXEPqqXV5469kAsgPL7XcFX006I136jX2SacGSEdgRWreTto/exec";
-      console.log("public")
-      console.log("AKfycbyUrs2TvnhrJy0eKpcra2Ul9BFEcT4SYtpoKSxlREhi-KnL8PWfC1BrtOvJxz2NT6Y")
   // } else {
   //     console.log("private")
   //     console.log("AKfycbxuEZ4I27fwucvgYf6ZKL3E400_kOgdeiOm46ETYnjGlJ2kkprIjpfYHccq4SLBbMY")
